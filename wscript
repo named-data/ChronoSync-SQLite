@@ -75,7 +75,7 @@ def configure(conf):
 def build (bld):
 
     libchronosync = bld (
-        target="chronosync",
+        target="chronosync-sqlite",
         features=['cxx', 'cxxshlib'],
         source = bld.path.ant_glob(['src/**/*.cc', 'src/**/*.proto']),
         use = 'BOOST BOOST_THREAD SSL CCNX_CPP SQLITE3 LIBEVENT LIBEVENT_PTHREAD LOG4CXX',
@@ -89,21 +89,21 @@ def build (bld):
           features = "cxx cxxprogram",
           defines = "WAF",
           source = bld.path.ant_glob(['test/*.cc']),
-          use = 'BOOST_TEST BOOST_FILESYSTEM BOOST_DATE_TIME LOG4CXX chronosync',
+          use = 'BOOST_TEST BOOST_FILESYSTEM BOOST_DATE_TIME LOG4CXX chronosync-sqlite',
           includes = "src .",
           install_prefix = None,
           )
 
-    headers = bld.path.ant_glob(['src/*.h'])
-    bld.install_files("%s/chronosync" % bld.env['INCLUDEDIR'], headers)
+    headers = bld.path.ant_glob(['src/sync-core.h'])
+    bld.install_files("%s/chronosync-sqlite" % bld.env['INCLUDEDIR'], headers)
 
     pc = bld (
         features = "subst",
-        source = 'libchronosync.pc.in',
-        target= 'libchronosync.pc',
+        source = 'libchronosync-sqlite.pc.in',
+        target= 'libchronosync-sqlite.pc',
         install_path = '${LIBDIR}/pkgconfig',
         PREFIX = bld.env['PREFIX'],
-        INCLUDEDIR = '%s/chronosync' % bld.env['INCLUDEDIR'],
+        INCLUDEDIR = '%s/chronosync-sqlite' % bld.env['INCLUDEDIR'],
         VERSION = VERSION,
         )
 

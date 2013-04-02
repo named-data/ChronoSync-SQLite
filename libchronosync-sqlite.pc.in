@@ -2,9 +2,9 @@ prefix=@PREFIX@
 libdir=@LIBDIR@
 includedir=@INCLUDEDIR@
 
-Name: libchronosync
+Name: libchronosync-sqlite
 Description: chronosync library using sqlite3 as sync log storage (and sync tree)
 Version: @VERSION@
-Libs: -L${libdir} -lchronosync
+Libs: -L${libdir} -lchronosync-sqlite
 Cflags: -I${includedir}
 
