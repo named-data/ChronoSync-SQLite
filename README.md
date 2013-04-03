@@ -1,8 +1,9 @@
 chronosync-sqlite: sync library for multiuser applications for NDN (with persistent SQLite storage of the state)
-=========================================================================================================================
+================================================================================================================
 
 1. ChronoSync
-ChronoSync is a library that allows you to synchronize state of a dataset. You can find the details [here](http://irl.cs.ucla.edu/~zhenkai/chronosync.pdf) (we highly recommend you read this before use the library).
+-------------
+ChronoSync is a library that allows you to synchronize state of a dataset.
 
 The usage of this library is very simple. You just needs to specify the dataset you want to synchronize and what to do when the library tells you new data is added to the dataset.
 
